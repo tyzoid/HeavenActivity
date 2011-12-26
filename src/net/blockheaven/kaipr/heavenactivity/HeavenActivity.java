@@ -27,39 +27,19 @@ import com.nijiko.permissions.PermissionHandler;
 
 
 public class HeavenActivity extends JavaPlugin {
-    /**
-     * Logger for messages.
-     */
+    //Logger for messages.
     protected static final Logger logger = Logger.getLogger("Minecraft.HeavenActivity");
-    
-    /**
-     * Configuration
-     */
+    //Configuration
     public HeavenActivityConfig config;
-    
-    /**
-     * Data
-     */
+    //Data
     public HeavenActivityData data;
-    
-    /**
-     * Permission handler
-     */
+    //Permission Handler
     public static PermissionHandler Permissions;
-    
-    /**
-     * Register-based economy handling method
-     */
+    //Register-based economy handling method
     public static Method ecoMethod;
-    
-    /**
-     * Sequence update timer
-     */
+    //Sequence update timer
     public static Timer updateTimer = null;
-    
-    /**
-     * The current sequence
-     */
+    //the current sequence
     public int currentSequence = 1;
     
     /**
