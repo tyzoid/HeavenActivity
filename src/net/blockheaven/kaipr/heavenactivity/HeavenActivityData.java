@@ -122,6 +122,9 @@ public class HeavenActivityData {
         
         final int activity = (int)(activityPoints * plugin.config.pointMultiplier / sequences);
         
+        //TODO: Remove debug code
+        System.out.println("[HeavenActivity] Debug message: activityPoints=" + activityPoints + ", activity=" + activity + ", sequences=" + sequences + ", pointMultiplyer=" + plugin.config.pointMultiplier);
+        
         if (plugin.config.debug)
             plugin.debugMsg("Activity (" + String.valueOf(activity) + ") calculated for player " + playerName + " using " + String.valueOf(sequences) + " sequences.", started);
         
