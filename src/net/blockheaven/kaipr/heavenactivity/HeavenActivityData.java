@@ -44,7 +44,7 @@ public class HeavenActivityData {
      * 
      * @param playerName
      * @param source
-     * @param activity
+     * @param count
      */
     public void addActivity(String playerName, ActivitySource source, Integer count) {
         

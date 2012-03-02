@@ -9,10 +9,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.bukkit.util.config.Configuration;
+import org.bukkit.configuration.Configuration;
 import org.mbertoli.jfep.Parser;
 
 public class HeavenActivityConfig {
+
+    //TODO! Update config!
 
     /**
      * Plugin reference
@@ -58,7 +60,7 @@ public class HeavenActivityConfig {
     public boolean logCommands;
     
     
-    public HeavenActivityConfig(HeavenActivity plugin) {
+    public HeavenActivityConfig(HeavenActivity plugin) { //TODO! Fix config!
         this.plugin = plugin;
         
         File configFile = new File(plugin.getDataFolder() + File.separator + "config.yml");

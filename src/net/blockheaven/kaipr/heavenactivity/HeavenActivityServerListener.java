@@ -2,14 +2,16 @@ package net.blockheaven.kaipr.heavenactivity;
 
 import net.blockheaven.kaipr.heavenactivity.register.payment.Methods;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.event.server.ServerListener;
 import org.bukkit.plugin.Plugin;
 
 import com.nijikokun.bukkit.Permissions.Permissions;
 
-public class HeavenActivityServerListener extends ServerListener {
+public class HeavenActivityServerListener implements Listener {
     
     /**
      * Plugin reference
@@ -27,7 +29,7 @@ public class HeavenActivityServerListener extends ServerListener {
     }
 
 
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPluginEnable(PluginEnableEvent event) {
         
         if (HeavenActivity.Permissions == null) {
@@ -52,7 +54,7 @@ public class HeavenActivityServerListener extends ServerListener {
         
     }
 
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPluginDisable(PluginDisableEvent event) {
         
         if (HeavenActivity.Permissions != null) {

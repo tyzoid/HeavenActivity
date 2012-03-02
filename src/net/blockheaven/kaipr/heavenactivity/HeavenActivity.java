@@ -16,10 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.block.BlockListener;
-import org.bukkit.event.player.PlayerListener;
-import org.bukkit.event.server.ServerListener;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -58,23 +55,14 @@ public class HeavenActivity extends JavaPlugin {
         data.initNewSequence();
         startUpdateTimer();
         
-        PlayerListener playerListener = new HeavenActivityPlayerListener(this);
-        BlockListener blockListener = new HeavenActivityBlockListener(this);
-        ServerListener serverListener = new HeavenActivityServerListener(this);
+        Listener playerListener = new HeavenActivityPlayerListener(this);
+        Listener blockListener = new HeavenActivityBlockListener(this);
+        Listener serverListener = new HeavenActivityServerListener(this);
 
         PluginManager pm = getServer().getPluginManager();
-        if (config.moveTracking)
-            pm.registerEvent(Event.Type.PLAYER_MOVE, playerListener, Priority.Monitor, this);
-        if (config.commandTracking || config.logCommands)
-            pm.registerEvent(Event.Type.PLAYER_COMMAND_PREPROCESS, playerListener, Priority.Monitor, this);
-        if (config.chatTracking)
-            pm.registerEvent(Event.Type.PLAYER_CHAT, playerListener, Priority.Monitor, this);
-        if (config.blockTracking) {
-            pm.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Priority.Monitor, this);
-            pm.registerEvent(Event.Type.BLOCK_PLACE, blockListener, Priority.Monitor, this);
-        }
-        pm.registerEvent(Event.Type.PLUGIN_ENABLE, serverListener, Priority.Monitor, this);
-        pm.registerEvent(Event.Type.PLUGIN_DISABLE, serverListener, Priority.Monitor, this);
+            pm.registerEvents(playerListener, this);
+            pm.registerEvents(blockListener, this);
+            pm.registerEvents(serverListener, this);
         
     }
     
@@ -175,7 +163,7 @@ public class HeavenActivity extends JavaPlugin {
     /**
      * Checks permission for a CommandSender
      * 
-     * @param player
+     * @param sender
      * @param node
      * @return
      */
@@ -296,7 +284,7 @@ public class HeavenActivity extends JavaPlugin {
     /**
      * Returns current activity of given player
      * 
-     * @param playerName
+     * @param player
      * @return
      */
     @Deprecated
