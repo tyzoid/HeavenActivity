@@ -3,12 +3,14 @@ package net.blockheaven.kaipr.heavenactivity;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-public class HeavenActivityPlayerListener extends PlayerListener {
+public class HeavenActivityPlayerListener implements Listener {
 
     protected HeavenActivity plugin;
     
@@ -23,9 +25,9 @@ public class HeavenActivityPlayerListener extends PlayerListener {
         this.plugin = plugin;
     }
     
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerMove(PlayerMoveEvent event) {
-        
+        //if(config.moveTracking
         if (event.isCancelled())
             return;
         
@@ -46,9 +48,9 @@ public class HeavenActivityPlayerListener extends PlayerListener {
         
     }
     
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerChat(PlayerChatEvent event) {
-        
+        //if(config.chatTracking)
         if (event.isCancelled() && !plugin.config.chatTrackCancelled)
             return;
         
@@ -63,9 +65,9 @@ public class HeavenActivityPlayerListener extends PlayerListener {
      *
      * @param event Relevant event details
      */
-    @Override
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-        
+        //if(config.commandTracking)
         if (event.isCancelled() && !plugin.config.commandTrackCancelled)
             return;
         
